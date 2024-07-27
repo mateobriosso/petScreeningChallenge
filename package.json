@@ -1,0 +1,21 @@
+{
+  "name": "petscreeningchallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --headed",
+    "report": "npx playwright show-report",
+    "tsc": "tsc",
+    "questions": "node questions.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^20.14.12",
+    "playwright": "^1.45.3",
+    "typescript": "^5.5.4"
+  }
+}
