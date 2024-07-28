@@ -2,8 +2,9 @@ export default {
     testPage: 'test',
     inputPage: 'input',
     buttonPage: 'button',
-    dragPage: 'drag',
     selectPage: 'select',
+    dragPage: 'drag',
+    multiSelectPage: 'multiSelect',
     tablePage: 'table',
     advancedTablePage: 'advTable',
 };

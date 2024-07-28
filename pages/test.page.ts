@@ -2,31 +2,45 @@ import { type Page, type Locator , expect } from '@playwright/test';
 
 export default class TestPage {
   readonly page: Page;
-  readonly loginButton: Locator;
-  readonly messagePanel: Locator;
-  readonly password: Locator;
-  readonly userName: Locator;
+  readonly btnInput: Locator;
+  readonly btnButton: Locator;
+  readonly btnSelect: Locator;
+  readonly btnDrag: Locator;
+  readonly btnMultiSelect: Locator;
+  readonly btnTable: Locator;
+  readonly btnAdvTable: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.loginButton = page.getByRole('button', { name: 'Login' });
-    this.messagePanel = page.locator('#output');
-    this.password = page.getByPlaceholder('Password');
-    this.userName = page.getByPlaceholder('UserName');
+    this.btnInput = page.getByRole('link', { name: 'Edit' });
+    this.btnButton = page.getByRole('link', { name: 'Click' });
+    this.btnSelect = page.getByRole('link', { name: 'Drop-Down' });
+    this.btnDrag = page.getByRole('link', { name: 'AUI - 1' });
+    this.btnMultiSelect = page.getByRole('link', { name: 'AUI - 4' });
+    this.btnTable = page.getByRole('link', { name: 'Simple table' });
+    this.btnAdvTable = page.getByRole('link', { name: 'Advance table' });
+    
   }
 
-  async fillEmail(email: string) {
-    await this.userName.fill(email);
+  async clickInput() {
+    await this.btnInput.click();
   }
-
-  async fillPassword(password: string) {
-    await this.password.fill(password);
+  async clickButton() {
+    await this.btnButton.click();
   }
-
-  async doLogin(email: string, password: string) {
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.loginButton.click();
+  async clickSelect() {
+    await this.btnSelect.click();
   }
-
+  async clickDrag() {
+    await this.btnDrag.click();
+  }
+  async clickMultiSelect() {
+    await this.btnMultiSelect.click();
+  }
+  async clickTable() {
+    await this.btnTable.click();
+  }
+  async clickAdvancedTable() {
+    await this.btnAdvTable.click();
+  }
 }

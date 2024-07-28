@@ -2,31 +2,38 @@ import { type Page, type Locator , expect } from '@playwright/test';
 
 export default class TablePage {
   readonly page: Page;
-  readonly loginButton: Locator;
-  readonly messagePanel: Locator;
-  readonly password: Locator;
-  readonly userName: Locator;
+  readonly tblPrices: Locator;
+  readonly tblPricesBody: Locator;
+  readonly tblPricesFoot: Locator;
+  readonly tblPricesTotal: Locator;
+  readonly tblPeople: Locator;
+  readonly chkRaj: Locator;
+  readonly tblSort: Locator;
+  readonly tblHdDessert: Locator;
+  readonly tblColDataDesserts: Locator;
+
 
   constructor(page: Page) {
     this.page = page;
-    this.loginButton = page.getByRole('button', { name: 'Login' });
-    this.messagePanel = page.locator('#output');
-    this.password = page.getByPlaceholder('Password');
-    this.userName = page.getByPlaceholder('UserName');
-  }
+    this.tblPrices = page.locator('#shopping');
+    this.tblPricesBody = this.tblPrices.locator("tbody");
+    this.tblPricesFoot = this.tblPrices.locator("tfoot");
+    this.tblPricesTotal = this.tblPricesFoot.locator("td").last();
+    this.tblPeople = page.locator('#simpletable');
+    this.chkRaj = page.locator('#second');
+    this.tblSort = page.locator('table.mat-sort');
+    this.tblHdDessert = page.locator('th[mat-sort-header="name"]');
+    this.tblColDataDesserts = page.locator('table.mat-sort tr td:first-child');
 
-  async fillEmail(email: string) {
-    await this.userName.fill(email);
   }
-
-  async fillPassword(password: string) {
-    await this.password.fill(password);
-  }
-
-  async doLogin(email: string, password: string) {
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.loginButton.click();
+  
+  async checkRajCheckbox(){
+    const rows = this.tblPeople.locator("tbody tr");
+    const rajRow = rows.filter({
+      has: this.page.locator('td'),
+      hasText: 'Raj'
+    })
+    await rajRow.locator('input').check();
   }
 
 }
