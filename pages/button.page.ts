@@ -2,31 +2,23 @@ import { type Page, type Locator , expect } from '@playwright/test';
 
 export default class ButtonPage {
   readonly page: Page;
-  readonly loginButton: Locator;
-  readonly messagePanel: Locator;
-  readonly password: Locator;
-  readonly userName: Locator;
+  readonly btnGoToHome: Locator;
+  readonly btnFindLocation: Locator;
+  readonly btnFindColor: Locator;
+  readonly btnDimension: Locator;
+  readonly btnDisabled: Locator;
+  readonly btnHold: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.loginButton = page.getByRole('button', { name: 'Login' });
-    this.messagePanel = page.locator('#output');
-    this.password = page.getByPlaceholder('Password');
-    this.userName = page.getByPlaceholder('UserName');
+    this.btnGoToHome = page.locator('#home');
+    this.btnFindLocation = page.locator('#position');
+    this.btnFindColor = page.locator('#color');
+    this.btnDimension = page.locator('#property');
+    this.btnDisabled = page.locator('#isDisabled.is-info');
+    this.btnHold = page.locator('#isDisabled.is-primary');
+
   }
 
-  async fillEmail(email: string) {
-    await this.userName.fill(email);
-  }
-
-  async fillPassword(password: string) {
-    await this.password.fill(password);
-  }
-
-  async doLogin(email: string, password: string) {
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.loginButton.click();
-  }
 
 }

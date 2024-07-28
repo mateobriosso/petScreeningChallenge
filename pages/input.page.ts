@@ -2,31 +2,22 @@ import { type Page, type Locator , expect } from '@playwright/test';
 
 export default class InputPage {
   readonly page: Page;
-  readonly loginButton: Locator;
-  readonly messagePanel: Locator;
-  readonly password: Locator;
-  readonly userName: Locator;
+  readonly txtFullName: Locator;
+  readonly txtAppendAndTab: Locator;
+  readonly txtCheckText: Locator;
+  readonly txtClear: Locator;
+  readonly txtDisabled: Locator;
+  readonly txtReadonly: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.loginButton = page.getByRole('button', { name: 'Login' });
-    this.messagePanel = page.locator('#output');
-    this.password = page.getByPlaceholder('Password');
-    this.userName = page.getByPlaceholder('UserName');
-  }
+    this.txtFullName = page.locator('#fullName');
+    this.txtAppendAndTab = page.locator('#join');
+    this.txtCheckText = page.locator('#getMe');
+    this.txtClear = page.locator('#clearMe');
+    this.txtDisabled = page.locator('#noEdit');
+    this.txtReadonly = page.locator('#dontwrite');
 
-  async fillEmail(email: string) {
-    await this.userName.fill(email);
-  }
-
-  async fillPassword(password: string) {
-    await this.password.fill(password);
-  }
-
-  async doLogin(email: string, password: string) {
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.loginButton.click();
   }
 
 }

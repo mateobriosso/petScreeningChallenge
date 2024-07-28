@@ -6,8 +6,7 @@
   "scripts": {
     "test": "npx playwright test --headed",
     "report": "npx playwright show-report",
-    "tsc": "tsc",
-    "questions": "node questions.js"
+    "questions": "tsc && node questions.js"
   },
   "keywords": [],
   "author": "",
