@@ -1,7 +1,7 @@
 # PetScreening Challenge
 
 ## Description
-This project is part of the PetScreening challenge. It includes a set of questions and automated tests.
+The PetScreening Challenge project is designed to demonstrate automated testing capabilities using JavaScript with Playwright. It follows the Page Object Model (POM) pattern to ensure maintainability and scalability of the test code. The project includes a set of questions and automated tests to validate the functionality of the application under test (https://letcode.in/test).
 
 ## Installation
 1. Clone the repository:
